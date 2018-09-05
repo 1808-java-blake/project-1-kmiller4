@@ -19,7 +19,7 @@ export const AppNav: React.StatelessComponent<{}> = () => {
               <Link to="/sign-in" className="unset-anchor nav-link">Sign In</Link>
             </li>
             <li className="nav-item active">
-              <Link to="/movies" className="unset-anchor nav-link">Movies</Link>
+              <Link to="/reimbursements" className="unset-anchor nav-link">reimbursements</Link>
             </li>
           </ul>
         </div>

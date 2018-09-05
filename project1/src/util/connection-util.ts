@@ -6,5 +6,5 @@ export const connectionPool = new Pool({
     max: 2,
     password: '2077LibertyPrime',
     port: 5432,
-    user: process.env["1808_MOVIE_DB_USERNAME"]
+    user: process.env["1808_reimbursement_DB_USERNAME"]
 })

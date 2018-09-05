@@ -9,6 +9,7 @@
     "eject": "react-scripts-ts eject"
   },
   "dependencies": {
+    "@types/express": "^4.16.0",
     "@types/pg": "^7.4.10",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
