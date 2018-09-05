@@ -11,15 +11,19 @@ export async function findAll(): Promise<User[]> {
   const client = await connectionPool.connect();
   try {
     const resp = await client.query(
-      `SELECT * FROM movies.app_users
+      `SELECT * FROM ers.ers_users`);
+
+        /*`SELECT * FROM ers.ers_users
         LEFT JOIN movies.users_movies
-        USING (user_id)
+        USING (ers.ers_users_id)
         LEFT JOIN movies.movies
-        USING(movie_id)`);
+        USING(movie_id)`);*/
 
     // extract the users and their movies from the result set
     const users = [];
     resp.rows.forEach((user_movie_result) => {
+
+
       const movie = movieConverter(user_movie_result);
       const exists = users.some( existingUser => {
         if(user_movie_result.user_id === existingUser.id) {
@@ -28,7 +32,7 @@ export async function findAll(): Promise<User[]> {
         }
       })
       if (!exists) {
-        const newUser = userConverter(user_movie_result);
+        const newUser = userConverter(user_movie_result);;
         //movie.id && newUser.movies.push(movie);
         users.push(newUser);
       }
@@ -47,13 +51,16 @@ export async function findById(id: number): Promise<User> {
   const client = await connectionPool.connect();
   try {
     const resp = await client.query(
-      `SELECT * FROM movies.app_users u
+        `SELECT * FROM ers.ers_users u`
+     );
+        const user = userConverter(resp.rows[0]); // get the user data from first row
+      /* `SELECT * FROM movies.app_users u
         LEFT JOIN movies.users_movies
-        USING (user_id)
+        USING (ers_users_id)
         LEFT JOIN movies.movies
         USING(movie_id)
-        WHERE u.user_id = $1`, [id]);
-        const user = userConverter(resp.rows[0]); // get the user data from first row
+        WHERE u.user_id = $1`, [id]*/
+
 
         // get the movies from all the rows
         /*resp.rows.forEach((movie) => {
@@ -73,9 +80,9 @@ export async function findByUsernameAndPassword(username: string, password: stri
   const client = await connectionPool.connect();
   try {
     const resp = await client.query(
-      `SELECT * FROM movies.app_users u
-        WHERE u.username = $1
-        AND u.password = $2`, [username, password]);
+      `SELECT * FROM ers.ers_users u
+        WHERE u.ers_username = $1
+        AND u.ers_password = $2`, [username, password]);
         if(resp.rows.length !== 0) {
           return userConverter(resp.rows[0]); // get the user data from first row
         }

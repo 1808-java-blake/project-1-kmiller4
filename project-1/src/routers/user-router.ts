@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import express from 'express';
 import * as userDao from '../dao/user-dao';
 
-// all routes defined with this object will imply /movies, but WHY?
 export const userRouter = express.Router(); // routers represent a subset of routes for the express application
 
 /**
