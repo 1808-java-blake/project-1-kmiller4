@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import { movieRouter } from './routers/movie-router';
 import { userRouter } from './routers/user-router';
+import { reimRouter} from './routers/reim-router';
 
 // create the app object from express
 const app = express();
@@ -55,6 +56,7 @@ app.use((req, resp, next) => {
  ********************************************************************************************/
 app.use('/movies', movieRouter);
 app.use('/users', userRouter);
+app.use('/reim', reimRouter);
 
 const server = app.listen(port, () => {
   console.log(`App is running at http://localhost:${app.get('port')} in ${app.get('env')} mode`);

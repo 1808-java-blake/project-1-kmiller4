@@ -113,16 +113,16 @@ export async function create(user: User): Promise<number> {
 
 /**
  * Add a movie to a users list
- * @param movieId 
+ * @param reimbId 
  * @param userId 
  */
-export async function addMovieToUser(movieId: number, userId: number): Promise<any> {
+export async function addReimToUser(reimbId: number, userId: number): Promise<any> {
   const client = await connectionPool.connect();
   try {
     const resp = await client.query(
-      `INSERT INTO movies.users_movies 
-        (user_id, movie_id)
-        VALUES ($1, $2)`, [userId, movieId]);
+      `INSERT INTO ers.ers_reimbursements 
+        (user_id, reimb_id)
+        VALUES ($6, $1)`, [userId, reimbId]);
   } finally {
     client.release();
   }
