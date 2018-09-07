@@ -10,7 +10,7 @@ export class MoviesComponent extends React.Component<any, any> {
   }
 
   public componentDidMount() {
-    fetch('http://localhost:3000/movies', {
+    fetch('http://localhost:9001/movies', {
       credentials: 'include'
     })
       .then(resp => resp.json())
