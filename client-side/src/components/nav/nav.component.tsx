@@ -30,10 +30,13 @@ export const AppNav: React.StatelessComponent<{}> = () => {
             <li className="nav-item active">
               <Link to="/clicker" className="unset-anchor nav-link">Clicker</Link>
             </li>
+            <li className="nav-item active">
+              <Link to="/add-reim" className="unset-anchor nav-link">Add Reimbursements</Link>
+            </li>
             <li className="nav-item active dropdown">
               <a className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Examples</a>
               <div className="dropdown-menu" aria-labelledby="examples-dropdown">
-                <div className="dropdown-item"><Link to="/movies" className="unset-anchor nav-link active">Movies</Link></div>
+                <div className="dropdown-item"><Link to="/reim" className="unset-anchor nav-link active">Reimbursements</Link></div>
                 <div className="dropdown-item"><Link to="/clicker" className="unset-anchor nav-link active">Clicker Game</Link></div>
                 <div className="dropdown-item"><Link to="/tic-tac-toe" className="unset-anchor nav-link active">Tic Tac Toe Game</Link></div>
                 <div className="dropdown-item"><Link to="/chuck-norris" className="unset-anchor nav-link active">Chuck Norris Jokes</Link></div>

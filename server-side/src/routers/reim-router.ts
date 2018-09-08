@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import express from 'express';
 import * as reimDao from '../dao/reim-dao';
-import { authMiddleware } from '../security/authorization-middleware';
+//import { authMiddleware } from '../security/authorization-middleware';
 
 // all routes defined with this object will imply /ers
 export const reimRouter = express.Router(); // routers represent a subset of routes for the express application
@@ -11,7 +11,7 @@ export const reimRouter = express.Router(); // routers represent a subset of rou
  * Find all reimbursements
  */
 reimRouter.get('', [
-  authMiddleware('admin', 'customer'),
+  //authMiddleware('admin', 'customer'),
   async (req: Request, resp: Response) => {
     try {
       console.log('retrieving all reimbursements');

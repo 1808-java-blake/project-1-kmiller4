@@ -11,8 +11,9 @@ import { ClickerComponent } from './components/clicker/clicker.component';
 import { TicTacComponent } from './components/tic-tac/tic-tac.component';
 import { ChuckNorrisComponent } from './components/chuck-norris/chuck-norris.component';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
-import { MoviesComponent } from './components/movies/movie.component';
+import { ReimComponent } from './components/reim/reim.component';
 import { NestedComponent } from './components/nested/nested.component';
+import { AddReimComponent } from './components/add-reim.component/add-reim.component';
 
 class App extends React.Component {
   public render() {
@@ -30,7 +31,8 @@ class App extends React.Component {
               <Route path="/tic-tac-toe" component={TicTacComponent} />
               <Route path="/chuck-norris" component={ChuckNorrisComponent} />
               <Route path="/pokemon" component={PokemonComponent} />
-              <Route path="/movies" component={MoviesComponent} />
+              <Route path="/reim" component={ReimComponent} />
+              <Route path="/add-reim" component={AddReimComponent} />
               <Route path="/nested" component={NestedComponent} />
               <Route component={HomeComponent} />
             </Switch>

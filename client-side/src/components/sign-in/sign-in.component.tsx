@@ -71,6 +71,7 @@ export class SignInComponent extends React.Component<RouteComponentProps<{}>, IS
       })
       .then(resp => {
         localStorage.setItem('user', JSON.stringify(resp));
+        // send user to a reimbursement screen, button to add reimbursement
         this.props.history.push('/home');
       })
       .catch(err => {
