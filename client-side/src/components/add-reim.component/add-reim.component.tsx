@@ -8,10 +8,10 @@ interface IState {
     submitted: string,
     resolved: string,
     description: string,
-    author: number
-    resolver: number,
-    status: number,
-    type: number
+    author: string,
+    resolver: string,
+    status: string,
+    type: string
   },
   errorMessage: string
 }
@@ -23,14 +23,14 @@ export class AddReimComponent extends React.Component<RouteComponentProps<{}>, I
     this.state = {
       credentials: {
         amount: 0,
-        author: 0,
+        author: '',
         description: '',
         id: 0,
         resolved: '',
-        resolver: 0,
-        status: 0,
+        resolver: '',
+        status: '',
         submitted: '',
-        type: 0,
+        type: '',
       },
       errorMessage: ''
     }
@@ -165,6 +165,7 @@ export class AddReimComponent extends React.Component<RouteComponentProps<{}>, I
 
   public render() {
     const { errorMessage, credentials } = this.state;
+    
 
     return (
       <form className="form-signin" onSubmit={this.submit}>
@@ -174,7 +175,7 @@ export class AddReimComponent extends React.Component<RouteComponentProps<{}>, I
         <input
           onChange={this.amountChange}
           value={credentials.amount}
-          type="text"
+          type="amount"
           id="inputAmount"
           className="form-control"
           placeholder="Amount"
@@ -208,56 +209,6 @@ export class AddReimComponent extends React.Component<RouteComponentProps<{}>, I
           id="inputAuthor"
           className="form-control"
           placeholder="Author"
-          required />
-
-        <label htmlFor="inputSubmitted" className="sr-only">Submitted</label>
-        <input
-          onChange={this.submittedChange}
-          value={credentials.submitted}
-          type="submitted"
-          id="inputSubmitted"
-          className="form-control"
-          placeholder="Submitted"
-          required />
-
-          <label htmlFor="inputStatus" className="sr-only">Status</label>
-        <input
-          onChange={this.statusChange}
-          value={credentials.status}
-          type="status"
-          id="inputStatus"
-          className="form-control"
-          placeholder="Status"
-          required />
-
-          <label htmlFor="inputResolved" className="sr-only">Resolved</label>
-        <input
-          onChange={this.resolvedChange}
-          value={credentials.resolved}
-          type="text"
-          id="inputResolved"
-          className="form-control"
-          placeholder="Resolved"
-          required />
-
-        <label htmlFor="inputResolver" className="sr-only">Resolver</label>
-        <input
-          onChange={this.resolverChange}
-          value={credentials.resolver}
-          type="resolver"
-          id="inputResolver"
-          className="form-control"
-          placeholder="Resolver"
-          required />
-
-          <label htmlFor="idType" className="sr-only">ID</label>
-        <input
-          onChange={this.idChange}
-          value={credentials.id}
-          type="id"
-          id="inputid"
-          className="form-control"
-          placeholder="ID"
           required />
 
         <button className="btn btn-lg btn-primary btn-block" type="submit">Submit</button>

@@ -5,7 +5,12 @@ export class ReimComponent extends React.Component<any, any> {
   public constructor(props: any) {
     super(props);
     this.state = {
-      reim: [],
+      approved: false,
+      credentials: {
+        resolved: '',
+        },
+        errorMessage: '',
+        reim: []
     }
   }
 
@@ -22,9 +27,22 @@ export class ReimComponent extends React.Component<any, any> {
       })
   }
 
+  public handleInputChange(e: any) {
+    console.log("fetching");
+    fetch('http://localhost:9001/reim', {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'PATCH'
+  })
+}
+
+
   public render() {
     return (
-      <table className="table table-striped table-dark col" id="movie-table">
+      <div>
+      <table className="table table-bordered col" id="reim-table">
         <thead>
           <tr>
             <th scope="col">Author</th>
@@ -46,12 +64,24 @@ export class ReimComponent extends React.Component<any, any> {
                 <td>{reim.description}</td>
                 <td>{reim.type}</td>
                 <td>{reim.status}</td>
-                <td>{reim.resolved}</td>
+                <td>
+                {reim.resolved}
+                  <form>
+                      <label>
+                        Approved
+                        <input
+                          name="approved"
+                          type="checkbox"
+                          onChange={this.handleInputChange} />
+                      </label>
+                      <br />
+                    </form></td>
               </tr>
             ))
           }
         </tbody>
       </table>
+    </div>
     );
   }
 }

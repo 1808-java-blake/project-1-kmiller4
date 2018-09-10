@@ -58,7 +58,7 @@ userRouter.post('', async (req, resp) => {
 userRouter.post('/:id/reim', async (req, resp) => {
   console.log('creating user')
   try {
-    const id = await userDao.addReimToUser(req.body.movieId, req.params.id);
+    const id = await userDao.addReimToUser(req.body.reimId, req.params.id);
     resp.sendStatus(201);
   } catch (err) {
     console.log(err);

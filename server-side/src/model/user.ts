@@ -1,5 +1,3 @@
-import { Movie } from "./movie";
-
 export class User {
   id = 0;
   username = '';
@@ -8,7 +6,6 @@ export class User {
   last_name = '';
   email = '';
   role = 'employee';
-  //movies: Movie[] = [];
 
   constructor(id?: number, username?: string, password?: string, first_name?: string, last_name?: string, email?: string, role?: string) {
     id && (this.id = id);

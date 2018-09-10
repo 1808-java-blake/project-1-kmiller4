@@ -4,12 +4,12 @@ export class Reim {
     submitted = '';
     resolved = '';
     description = '';
-    author = 0;
-    resolver = 0;
-    status = 0;
-    type = 0;
+    author = '';
+    resolver = '';
+    status = '';
+    type = '';
   
-    constructor(id?: number, amount?: number, submitted?: string, resolved?: string, description?: string, author?: number, resolver?: number, status?: number, type?: number) {
+    constructor(id?: number, amount?: number, submitted?: string, resolved?: string, description?: string, author?: string, resolver?: string, status?: string, type?: string) {
       id && (this.id = id);
       amount && (this.amount = amount);
       submitted && (this.submitted = submitted);

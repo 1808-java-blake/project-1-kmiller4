@@ -1,7 +1,5 @@
 import { connectionPool } from "../util/connection-util";
-import { Movie } from "../model/movie";
 import { User } from "../model/user";
-import { movieConverter } from "../util/movie-converter";
 import { userConverter } from "../util/user-converter";
 
 /**
@@ -21,22 +19,22 @@ export async function findAll(): Promise<User[]> {
 
     // extract the users and their movies from the result set
     const users = [];
-    resp.rows.forEach((user_movie_result) => {
+    // resp.rows.forEach((user_movie_result) => {
 
 
-      const movie = movieConverter(user_movie_result);
-      const exists = users.some( existingUser => {
-        if(user_movie_result.user_id === existingUser.id) {
-          movie.id && existingUser.movies.push(movie);
-          return true;
-        }
-      })
-      if (!exists) {
-        const newUser = userConverter(user_movie_result);;
+      //const movie = movieConverter(user_movie_result);
+      // const exists = users.some( existingUser => {
+      //   if(user_movie_result.user_id === existingUser.id) {
+    //     movie.id && existingUser.movies.push(movie);
+      //     return true;
+      //   }
+      // })
+      // if (!exists) {
+        // const newUser = userConverter(user_movie_result);;
         //movie.id && newUser.movies.push(movie);
-        users.push(newUser);
-      }
-    })
+        // users.push(newUser);
+     // }
+    // })
     return users;
   } finally {
     client.release();

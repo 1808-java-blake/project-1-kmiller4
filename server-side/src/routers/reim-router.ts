@@ -48,12 +48,28 @@ reimRouter.get('/:id', async (req, resp) => {
 reimRouter.post('', async (req, resp) => {
     console.log('creating reimbursement')
     try {
-      const id = await reimDao.createRiem(req.body);
+      const id = await reimDao.createReim(req.body);
       resp.status(201);
       resp.json(id);
     } catch (err) {
       console.log(err);
       resp.sendStatus(500);
     }
-  })
+  });
 
+  /**
+   * Approve/Deny reimbursement
+   */
+
+  reimRouter.patch('', async (req, resp) => {
+    console.log('updating reimbursement request')
+    try {
+      console.log("calling updateReim");
+      const id = await reimDao.updateReim(req.body);
+      resp.status(201);
+      resp.json(id);
+    } catch (err) {
+      console.log(err);
+      resp.sendStatus(500);
+    }
+  });

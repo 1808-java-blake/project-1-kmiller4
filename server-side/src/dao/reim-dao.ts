@@ -39,7 +39,7 @@ export async function findById(id: number): Promise<Reim> {
  * Add a new rembursement to the DB
  * @param reim 
  */
-export async function createRiem(reim): Promise<number> {
+export async function createReim(reim): Promise<number> {
   const client = await connectionPool.connect();
   try {
     const resp = await client.query(
@@ -52,3 +52,21 @@ export async function createRiem(reim): Promise<number> {
     client.release();
   }
 }
+
+  /**
+   * Approve or deny a reimbursement in the DB
+   * @param reim
+   */
+  export async function updateReim(reim): Promise<number> {
+    const client = await connectionPool.connect();
+    console.log("updating");
+    try {
+      const resp = await client.query(
+        `UPDATE ers.ers_reimbursement
+        SET reimb_status_id = 1
+        WHERE reimb_status_id = 0`, [reim.status]);
+      return resp.rows[0].reimb_id; 
+    } finally {
+      client.release();
+    }
+  }

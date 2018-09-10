@@ -3,7 +3,6 @@ import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-import { movieRouter } from './routers/movie-router';
 import { userRouter } from './routers/user-router';
 import { reimRouter} from './routers/reim-router';
 
@@ -48,13 +47,14 @@ app.use((req, resp, next) => {
   resp.header("Access-Control-Allow-Origin", "http://localhost:3000");
   resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   resp.header("Access-Control-Allow-Credentials", "true");
+  resp.header("Access-Control-Allow-Methods: PATCH");
+  resp.header("Allow: PATCH");
   next();
 })
 
 /*********************************************************************************************
  * API Routers
  ********************************************************************************************/
-app.use('/movies', movieRouter);
 app.use('/users', userRouter);
 app.use('/reim', reimRouter);
 
